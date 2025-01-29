@@ -1,0 +1,26 @@
+{% extends 'main.html'%}
+{% block crud_container %}
+    {% if user %}
+        <article class="card container fluid"></article>
+        <br>
+        <div class="card-body">
+                <p class="card-text"><b style="font-size: 1.7em;">ID:</b> <b style="font-size: 1.7em;">{{ user.id }}</b></p>
+                <p class="card-text">Name: {{ user.username }}</p>
+                 <p class="card-text">Age: {{ user.age }}</p>
+            </div>
+    {% else %}
+            <section class="container-fluid">
+                <h2 align="center"> Users </h2>
+                <br>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {% for user in users %}
+                            <li class="list-group-item">
+                                <a href="/user/{{ user.id }}">{{ loop.index }}. {{ user.username }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+    {% endif %}
+{% endblock %}
